@@ -16,6 +16,7 @@ if (cluster.isMaster) {
   const numberOfWorkers = numberOfCpus - 1;
   console.log(`Creating ${numberOfWorkers} workers`);
 
+  let finished = false;
   console.time();
 
   // Create workers.
@@ -25,6 +26,11 @@ if (cluster.isMaster) {
     workers.push(worker);
 
     worker.on("message", (msg) => {
+      if (finished) {
+        return;
+      }
+      finished = true;
+
       for (const worker of workers) {
         worker.kill();
       }
