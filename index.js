@@ -14,14 +14,14 @@ const prefix = process.argv[2];
 
 if (cluster.isMaster) {
   const numberOfWorkers = numberOfCpus - 1;
-  console.log(`Creating ${numberOfWorkers} workers`);
+  console.log(`🤖 x ${numberOfWorkers}`);
 
   let finished = false;
-  console.time();
+  console.time("Duration");
 
   // Create workers.
   const workers = [];
-  for (let i = 0; i < numberOfCpus - 1; i++) {
+  for (let i = 0; i < numberOfWorkers; i++) {
     const worker = cluster.fork();
     workers.push(worker);
 
@@ -34,8 +34,14 @@ if (cluster.isMaster) {
       for (const worker of workers) {
         worker.kill();
       }
-      console.log(msg);
-      console.timeEnd();
+      console.log(`
+# Address
+${msg.address}
+
+# Passphrase
+${msg.passphrase}
+`);
+      console.timeEnd("Duration");
     });
   }
 } else {
