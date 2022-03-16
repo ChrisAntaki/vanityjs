@@ -1,0 +1,19 @@
+{
+  "name": "miner",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "algosdk": "^1.14.0",
+    "hi-base32": "^0.5.1",
+    "js-sha512": "^0.8.0",
+    "sodium-native": "^3.3.0",
+    "stellar-base": "^7.0.0"
+  }
+}
