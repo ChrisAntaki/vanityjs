@@ -2,7 +2,7 @@
 
 Mines Algorand addresses efficienty, with Nodejs.
 
-```
+```sh
 # Install (once)
 npm i
 
